@@ -1,0 +1,106 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+#
+name: PDP-11 Asm
+scopeName: source.pdp11asm
+fileTypes: [mac]
+uuid: 98d8a7e6-bb3f-4822-b92f-17282352032d
+
+patterns:
+#- comment: Bad temporary label (not only numeric)
+#  name: invalid.illegal.asm
+#  match: ^[0-9]+[^0-9\s:].*$
+
+- comment: Bad line (not begin from label, space, dot or comment)
+  name: invalid.illegal.asm
+  match: ^[^a-zA-Z0-9_.;@/ \t\r\n].*$
+
+#- comment: DUP (storm syntax)
+#  name: keyword.control.asm
+#  match: ^\.\d+(?=\s)
+
+- comment: Label
+  name: entity.name.label.def.asm
+  match: ^(([a-zA-Z][a-zA-Z0-9]{,5})|([a-zA-Z][a-zA-Z0-9]{,4})[$])(?=\s|:|=|$)
+
+#- comment: 'Special case: conditional call/jmp'
+#  match: (?i)(?<=\s|:)(call|jp|jr)\s+(?:(z|nz|c|nc|po|pe|p|m)\s*,\s*)?((?:[a-zA-Z_.@$][a-zA-Z_.0-9]*)|[0-9]+(?:b|f))
+#  captures:
+#    '1': {name: keyword.other.command.asm}
+#    '2': {name: constant.other.flag.asm}
+#    '3': {name: entity.name.label.asm}
+
+#- comment: 'Special case: djnz'
+#  match: (?i)(?<=\s|:)(djnz)\s+((?:[a-zA-Z_.@$][a-zA-Z_.0-9]*)|[0-9]+(?:b|f))
+#  captures:
+#    '1': {name: keyword.other.command.asm}
+#    '2': {name: entity.name.label.asm}
+
+#- comment: 'Special case: conditional ret'
+#  match: (?i)(?<=\s|:)(ret)(?:\s+(z|nz|c|nc|po|pe|p|m))?(?=\s|:|;|$)
+#  captures:
+#    '1': {name: keyword.other.command.asm}
+#    '2': {name: constant.other.flag.asm}
+
+- comment: PDP-11 commands
+  name: keyword.other.command.asm
+  match: (?i)(?<=\s|:)(adc|adcb|add|ash|ashc|aslb?|asr|asrb|bcc|bcs|beq|bge|bgt|bhi|bhis|bic|bicb|bis|bisb|bit|bitb|ble|blo|blos|blt|bmi|bne|bpl|bpt|br|bvc|bvs|call|ccc|clc|cln|clr|clrb|clv|clz|cmp|cmpb|com|comb|dec|decb|div|emt|fadd|fdiv|fmul|fsub|halt|inc|incb|iot|jmp|jsr|mark|mfpi|mfps|movb?|mtpi|mtps|mul|neg|negb|nop|reset|return|rol|rolb|ror|rorb|rti|rts|rtt|sbc|sbcb|scc|sec|sen|sev|sez|sob|sub|swab|sxt|trap|tst|tstb|wait|xor|)(?=\s|$)
+
+#- comment: PDP-11 commands / known macros
+#  name: keyword.other.command.extended.asm
+#  match: (?i)(?<=\s|:)(exa|down|up)(?=\s|:|$)
+
+- comment: Asm data definition directives
+  name: storage.type.datadef.asm
+  match: (?i)(?<=\s|:)([\.])(asci(i|z)|blk(b|w)|byte|word)(?=\s)
+
+- comment: Asm general directives
+  name: keyword.control.asm
+  match: (?i)(?<=\s|:)([.])([=]|(a|c|p)sect|dsabl|enabl|end|end(c|m|r)|eot|error|even|global|ident|if|iff|ift|iftf|irp|irpc|limit|list|mcall|mexit|narg|nchr|nlist|ntype|odd|page|print|radix|rad50|rept|sbttl|title)(?=\s|$)
+  #match: (?i)(?<=\s|:)(\.=|\.(a|c|p)sect|\.dsabl|\.enabl|.end|\.end(c|m|r)|\.eot|\.error|\.even|\.global|\.ident|\.if|\.iff|\.ift|\.iftf|\.irp|\.irpc|\.limit|\.list|\.mcall|\.mexit|\.narg|\.nchr|\.nlist|\.ntype|\.odd|\.page|\.print|\.radix|\.rad50|\.rept|\.sbttl|\.title)
+  #(?=\s|:|$)
+
+#- comment: Asm functions
+#  name: support.function.asm
+#  match: (?i)\b(high|low|not|mod|shl|shr)\b
+
+#- comment: Asm functions
+#  name: support.function.asm
+#  match: (?i)(?<=[a-z0-9_])(\[|\])
+
+- comment: register set
+  name: variable.parameter.register.asm
+  match: (?i)\b(r[0-7]|pc|sp)\b
+
+- comment: DEC number
+  name: constant.numeric.asm
+  match: (?i)([0-9]*[.]\b)
+
+- comment: OCT number
+  name: constant.numeric.asm
+  match: (?i)([0-7]{,6}\b)  
+
+#- comment: BIN number
+#  name: constant.numeric.asm
+#  match: (?i)([0-7]{,6}\b)|([0-9]*[.]\b)
+#  match: (?i)(%[01]+\b)|(\b[01]+b\b)|((#|\$)[0-9a-f]+\b)|(\b([0-9]+|0x[0-9a-f]+|[0-9][0-9a-f]*h)\b)
+
+- comment: Label in commands (experimental, marks all unknown words as labels)
+  name: entity.name.label.asm
+  match: (\b)(([a-zA-Z][a-zA-Z0-9]{,5})|([a-zA-Z][a-zA-Z0-9]{,4})[$])\b
+#  match: (\b)[a-zA-Z][a-zA-Z0-9]*\b
+
+- comment: Comment line
+  name: comment.line.asm
+  match: (;).*
+
+- comment: Single-line string
+  name: string.asm
+  match: '''[^'']{1}'''
+
+- comment: Single-line string
+  name: string.asm
+  match: '"[^"]{2}"'
+
+- comment: Single-line string
+  name: string.asm
+  match: '/[^"]*/'

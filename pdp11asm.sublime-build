@@ -1,0 +1,64 @@
+{
+    "working_dir": "$file_path",
+    "file_regex": "^(.+)\\(([0-9]+)\\):.*?(): (.*)$",
+    "selector": "source.pdp11asm",
+    "encoding": "utf-8",
+
+    "windows":
+    {
+        "cmd": ["$packages/pdp11asm/build.bat","$file_name","$project_path"],
+        "encoding": "cp866"
+    },
+
+    "linux":
+    {
+        "cmd": ["$packages/pdp11asm/build.sh","$file_name","$project_path"]
+    },
+
+    "osx":
+    {
+        "cmd": ["$packages/pdp11asm/build","$file_name","$project_path"]
+    },
+
+
+    "variants":
+    [
+        {
+            "name": "Run",
+            "windows":
+            {
+                "cmd": ["$packages/pdp11asm/run.bat","$file_name","$project_path"],
+                "encoding": "cp866"
+            },
+
+            "linux":
+            {
+                "cmd": ["$packages/pdp11asm/run.sh","$file_name","$project_path"]
+            },
+
+            "osx":
+            {
+                "cmd": ["$packages/pdp11asm/run","$file_name","$project_path"]
+            }
+        },
+        {
+            "name": "Build and Run",
+            "windows":
+            {
+                "cmd": ["$packages/pdp11asm/buildrun.bat","$file_name","$project_path"],
+                "encoding": "cp866"
+            },
+
+            "linux":
+            {
+                "cmd": ["$packages/pdp11asm/buildrun.sh","$file_name","$project_path"]
+            },
+
+            "osx":
+            {
+                "cmd": ["$packages/pdp11asm/buildrun","$file_name","$project_path"]
+            }
+        }
+    ]
+
+}

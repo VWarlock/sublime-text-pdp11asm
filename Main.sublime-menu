@@ -1,0 +1,64 @@
+[
+
+{
+  "caption": "PDP11Asm",
+  "mnemonic": "P",
+  "id": "pdp11asm",
+  "children":
+  [
+    { "command": "", "caption": "New", "mnemonic": "N",
+      "children":
+      [
+        { "command": "pdp11_do_cmd", "args": {"cmd":"NewCode"},  "caption": "Code",         "mnemonic": "C" }
+      ]
+    },
+
+    { "caption": "-"},
+    { "command": "pdp11_do_cmd", "args": {"cmd":"Build"},     "caption": "Build",         "mnemonic": "B" },
+    { "command": "pdp11_do_cmd", "args": {"cmd":"Run"},       "caption": "Run",           "mnemonic": "R" },
+    { "command": "pdp11_do_cmd", "args": {"cmd":"Build_Run"}, "caption": "Build and Run", "mnemonic": "u" },
+    
+    { "caption": "-"},
+    
+    { "command": "", "caption": "Settings", "mnemonic": "e",
+      "children":
+      [
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.sublime-settings"}, "caption": "Main settings...",        "mnemonic": "M" },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.sublime-build"},    "caption": "Build settings...",       "mnemonic": "B" },
+        { "caption": "-"},
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build.bat"},               "caption": "Build script (win)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build.sh"},                "caption": "Build script (linux)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build"},                   "caption": "Build script (osx)..." },
+        { "caption": "-"},
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run.bat"},                 "caption": "Emul script (win)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run.sh"},                  "caption": "Emul script (linux)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run"},                     "caption": "Emul script (osx)..." }
+      ]
+    },
+
+    { "caption": "-"},
+    { "command": "", "caption": "Help", "mnemonic": "H",
+      "children":
+      [
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/README.md"}, "caption": "Read me", "mnemonic": "R" },
+        { "caption": "-"},
+        {"command": "pdp11_help", "args": {"indx":0}},
+        {"command": "pdp11_help", "args": {"indx":1}},
+        {"command": "pdp11_help", "args": {"indx":2}},
+        {"command": "pdp11_help", "args": {"indx":3}},
+        {"command": "pdp11_help", "args": {"indx":4}},
+        {"command": "pdp11_help", "args": {"indx":5}},
+        {"command": "pdp11_help", "args": {"indx":6}},
+        {"command": "pdp11_help", "args": {"indx":7}},
+        {"command": "pdp11_help", "args": {"indx":8}},
+        {"command": "pdp11_help", "args": {"indx":9}}
+      ]
+    },
+
+    { "caption": "-"},
+    { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.about"}, "caption": "About...",    "mnemonic": "t" }
+
+  ]
+}
+
+]

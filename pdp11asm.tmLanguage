@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>mac</string>
+		<string>asm</string>
+	</array>
+	<key>name</key>
+	<string>PDP-11 Asm</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Bad line (not begin from label, space, dot or comment)</string>
+			<key>match</key>
+			<string>^[^a-zA-Z0-9_.;@/ \t\r\n].*$</string>
+			<key>name</key>
+			<string>invalid.illegal.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Label</string>
+			<key>match</key>
+			<string>^(([a-zA-Z][a-zA-Z0-9]{,5})|([a-zA-Z][a-zA-Z0-9]{,4})[$])(?=\s|:|=|$)</string>
+			<key>name</key>
+			<string>entity.name.label.def.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>PDP-11 commands</string>
+			<key>match</key>
+			<string>(?i)(?&lt;=\s|:)(adc|adcb|add|ash|ashc|aslb?|asr|asrb|bcc|bcs|beq|bge|bgt|bhi|bhis|bic|bicb|bis|bisb|bit|bitb|ble|blo|blos|blt|bmi|bne|bpl|bpt|br|bvc|bvs|call|ccc|clc|cln|clr|clrb|clv|clz|cmp|cmpb|com|comb|dec|decb|div|emt|fadd|fdiv|fmul|fsub|halt|inc|incb|iot|jmp|jsr|mark|mfpi|mfps|movb?|mtpi|mtps|mul|neg|negb|nop|reset|return|rol|rolb|ror|rorb|rti|rts|rtt|sbc|sbcb|scc|sec|sen|sev|sez|sob|sub|swab|sxt|trap|tst|tstb|wait|xor|)(?=\s|$)</string>
+			<key>name</key>
+			<string>keyword.other.command.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asm data definition directives</string>
+			<key>match</key>
+			<string>(?i)(?&lt;=\s|:)([\.])(asci(i|z)|blk(b|w)|byte|word)(?=\s)</string>
+			<key>name</key>
+			<string>storage.type.datadef.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asm general directives</string>
+			<key>match</key>
+			<string>(?i)(?&lt;=\s|:)([.])([=]|(a|c|p)sect|dsabl|enabl|end|end(c|m|r)|eot|error|even|global|ident|if|iff|ift|iftf|irp|irpc|limit|list|mcall|mexit|narg|nchr|nlist|ntype|odd|page|print|radix|rad50|rept|sbttl|title)(?=\s|$)</string>
+			<key>name</key>
+			<string>keyword.control.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>register set</string>
+			<key>match</key>
+			<string>(?i)\b(r[0-7]|pc|sp)\b</string>
+			<key>name</key>
+			<string>variable.parameter.register.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>DEC number</string>
+			<key>match</key>
+			<string>(?i)([0-9]*[.]\b)</string>
+			<key>name</key>
+			<string>constant.numeric.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>OCT number</string>
+			<key>match</key>
+			<string>(?i)([0-7]{,6}\b)</string>
+			<key>name</key>
+			<string>constant.numeric.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Label in commands (experimental, marks all unknown words as labels)</string>
+			<key>match</key>
+			<string>(\b)(([a-zA-Z][a-zA-Z0-9]{,5})|([a-zA-Z][a-zA-Z0-9]{,4})[$])\b</string>
+			<key>name</key>
+			<string>entity.name.label.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Comment line</string>
+			<key>match</key>
+			<string>(;).*</string>
+			<key>name</key>
+			<string>comment.line.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Single-line string</string>
+			<key>match</key>
+			<string>'[^']{1}'</string>
+			<key>name</key>
+			<string>string.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Single-line string</string>
+			<key>match</key>
+			<string>"[^"]{2}"</string>
+			<key>name</key>
+			<string>string.asm</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Single-line string</string>
+			<key>match</key>
+			<string>/[^"]*/</string>
+			<key>name</key>
+			<string>string.asm</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.pdp11asm</string>
+	<key>uuid</key>
+	<string>98d8a7e6-bb3f-4822-b92f-17282352032d</string>
+</dict>
+</plist>
