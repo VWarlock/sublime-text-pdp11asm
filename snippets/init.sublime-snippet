@@ -1,0 +1,24 @@
+<snippet>
+    <content><![CDATA[
+; -----------------------------------------------------------------------------
+; Programm: 
+;
+; Autor:
+; Copiright
+; -----------------------------------------------------------------------------
+
+	.TITLE
+	
+	.ASECT
+	.= 1000
+
+START:	{Inset your code hire}
+
+END:	.END START
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>!init</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.pdp11asm</scope>
+    <description>PDP-11 Asm: Macro-11 skeleton</description>
+</snippet>

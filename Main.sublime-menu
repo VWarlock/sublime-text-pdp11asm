@@ -9,7 +9,10 @@
     { "command": "", "caption": "New", "mnemonic": "N",
       "children":
       [
-        { "command": "pdp11_do_cmd", "args": {"cmd":"NewCode"},  "caption": "Code",         "mnemonic": "C" }
+        { "command": "pdp11_do_cmd", "args": {"cmd":"NewCode"},				"caption": "Code",         		"mnemonic": "C" },
+        { "command": "pdp11_do_cmd", "args": {"cmd":"NewRT11Prog"},			"caption": "RT-11 Programm",	 	"mnemonic": "R" },
+        { "command": "pdp11_do_cmd", "args": {"cmd":"Not_Implemented_Command_1"}, 	"caption": "Not Implemented Menu Item", "mnemonic": "B" }
+
       ]
     },
 
@@ -23,18 +26,23 @@
     { "command": "", "caption": "Settings", "mnemonic": "e",
       "children":
       [
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.sublime-settings"}, "caption": "Main settings...",        "mnemonic": "M" },
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.sublime-build"},    "caption": "Build settings...",       "mnemonic": "B" },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.sublime-settings"},	"caption": "Main settings...",        "mnemonic": "M" },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/pdp11asm.sublime-build"},	"caption": "Build settings...",       "mnemonic": "B" },
         { "caption": "-"},
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build.bat"},               "caption": "Build script (win)..." },
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build.sh"},                "caption": "Build script (linux)..." },
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build"},                   "caption": "Build script (osx)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build.bat"},			"caption": "Build script (win)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build.sh"},                	"caption": "Build script (linux)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/build"},                   	"caption": "Build script (osx)..." },
         { "caption": "-"},
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run.bat"},                 "caption": "Emul script (win)..." },
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run.sh"},                  "caption": "Emul script (linux)..." },
-        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run"},                     "caption": "Emul script (osx)..." }
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run.bat"},                 	"caption": "Emul script (win)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run.sh"},                  	"caption": "Emul script (linux)..." },
+        { "command": "open_file", "args": {"file": "${packages}/pdp11asm/run"},                     	"caption": "Emul script (osx)..." }
       ]
     },
+
+    { "caption": "-"},
+
+    { "command": "pdp11_do_cmd", "args": {"cmd":"Not_Implemented_Command_2"}, "caption": "Not Implemented Menu Item",    "mnemonic": "A" },
+
 
     { "caption": "-"},
     { "command": "", "caption": "Help", "mnemonic": "H",

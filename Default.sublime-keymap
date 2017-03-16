@@ -1,0 +1,21 @@
+[
+	{"keys": ["f1"], "command": "pdp11_quick_help",
+		"context": [
+		{
+			"operand": "source.pdp11asm",
+			"operator": "equal",
+			"key": "selector"
+		}
+		]
+
+	},
+		
+	{"keys": ["ctrl+f1"], "command": "show_overlay",
+		"args":
+		{
+			"overlay": "command_palette",
+			"text": "Snippet: "
+		}
+
+	}
+]

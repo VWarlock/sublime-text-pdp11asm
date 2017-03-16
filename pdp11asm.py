@@ -4,9 +4,10 @@ import os
 # Consts
 THIS_PLUGIN_NAME = 'pdp11asm'
 THIS_PLUGIN_DEBUG = True
+NOT_IMPLEMENTED_MENU_ITEM = ["Not_Implemented_Command_1", "Not_Implemented_Command_2"]
 
 # Initialize plugin
-def PDP11Init():
+def Pdp11Init():
 	global PDP11_DIR, PDP11_SYNTAX_FILE, PDP11_SNIP_DIR, PDP11_HELP_DIR
 	PDP11_DIR=os.path.join(sublime.packages_path(), THIS_PLUGIN_NAME)
 	PDP11_SYNTAX_FILE='Packages'+'/'+THIS_PLUGIN_NAME+'/'+THIS_PLUGIN_NAME+'.tmLanguage'
@@ -24,7 +25,7 @@ def dbgprint(s):
 
 
 # Command handler class
-class PDP11DoCmdCommand(sublime_plugin.WindowCommand):
+class Pdp11DoCmdCommand(sublime_plugin.WindowCommand):
 	# Command handler
 	def run(self, cmd):
 
@@ -33,6 +34,12 @@ class PDP11DoCmdCommand(sublime_plugin.WindowCommand):
 			v.set_syntax_file(PDP11_SYNTAX_FILE)
 			v.run_command("insert_snippet", {"name": PDP11_SNIP_DIR+'/init.sublime-snippet'})
 			dbgprint("New Code created")
+
+		elif cmd=="NewRT11Prog":
+			v=self.window.new_file()
+			v.set_syntax_file(PDP11_SYNTAX_FILE)
+			v.run_command("insert_snippet", {"name": PDP11_SNIP_DIR+'/rt11prog.sublime-snippet'})
+			dbgprint("New RT-11 Programm created")
 
 		elif cmd=="Build":
 			self.window.run_command("build")
@@ -46,10 +53,29 @@ class PDP11DoCmdCommand(sublime_plugin.WindowCommand):
 			self.window.run_command("build", {"variant": "Build and Run"})
 			dbgprint("Build and Run script started")
 
+		elif cmd=="Not_Implemented_Menu_Item_1":
+			self.window.run_command("Not_Implemented_Command_1", "Not Implemented Menu Item 1")
+			dbgprint("Not implemented yet")
 
+		elif cmd=="Not_Implemented_Menu_Item_2":
+			self.window.run_command("Not_Implemented_Command_2", "Not Implemented Menu Item 2")
+			dbgprint("Not implemented yet")
+
+	# Disable not implemented items
+	def is_enabled(self, cmd):
+		if cmd not in NOT_IMPLEMENTED_MENU_ITEM:
+			return True
+		return False
+	
+		# Hide not implemented items
+	def is_visible(self, cmd):
+		if cmd not in NOT_IMPLEMENTED_MENU_ITEM:
+			return True
+		return False
+		
 
 # Helps
-class PDP11HelpCommand(sublime_plugin.WindowCommand):
+class Pdp11HelpCommand(sublime_plugin.WindowCommand):
 	def run(self, indx):
 		n=self.help_list()
 		self.window.run_command("open_file", {"file": "${packages}/pdp11asm/helps/"+n[indx]})
@@ -77,14 +103,14 @@ class PDP11HelpCommand(sublime_plugin.WindowCommand):
 
 
 # Quick help - F1
-class PDP11QuickHelpCommand(sublime_plugin.WindowCommand):
+class Pdp11QuickHelpCommand(sublime_plugin.WindowCommand):
 	# Init: read items from file
 	def __init__(self, *args, **kwargs):
 		self.help=[]
 		with open(PDP11_DIR+'/'+THIS_PLUGIN_NAME+'.quickhelp','rt') as f:
 			self.help = [line.strip() for line in f]
 
-		super(PDP11QuickHelpCommand,self).__init__(*args, **kwargs)
+		super(Pdp11QuickHelpCommand,self).__init__(*args, **kwargs)
 
 	# Show help
 	def run(self):
@@ -93,7 +119,7 @@ class PDP11QuickHelpCommand(sublime_plugin.WindowCommand):
 
 
 # Autocompletion class
-class PDP11Autocomplete(sublime_plugin.EventListener):
+class Pdp11Autocomplete(sublime_plugin.EventListener):
 	# Generate completion list from all opened tabs
 	def on_query_completions(self, view, prefix, locations):
 		# Check if option is enabled
@@ -122,8 +148,8 @@ class PDP11Autocomplete(sublime_plugin.EventListener):
 # (cannot call sublime.packages_path() at importing time). For ST2 fust call PDP11Init().
 if int(sublime.version())>=3000:
 	def plugin_loaded():
-		PDP11Init()
+		Pdp11Init()
 else:
-	PDP11Init()
+	Pdp11Init()
 
 dbgprint("PDP-11 Asm plugin started!")

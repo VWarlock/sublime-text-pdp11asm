@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[
+; -----------------------------------------------------------------------------
+; Programm: 
+;
+; Autor:
+; Copiright
+; -----------------------------------------------------------------------------
+
+	.TITLE RT11PR
+	
+	.MCall	.Exit, .Print
+
+START:
+	.Print	#Mes
+	.Exit
+
+Mes:	.ASCIZ	\This is RT-11 Programm !!!\
+
+END:	.END START
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>!rt11prog</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.pdp11asm</scope>
+    <description>PDP-11 Asm: RT-11 Programm skeleton</description>
+</snippet>
