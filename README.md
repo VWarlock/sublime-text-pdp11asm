@@ -3,7 +3,7 @@
 
 ## Product Info
 
-This plugin contains syntax definition for PDP-11 assembler language, code snippets (mostly for UKNC), its own shiny color theme. Building system is mainly oriented on [macro11](https://github.com/shattered/macro11) assembler and [RT-11](http://zx-pk.ru/threads/24755-emulyator-rt-11.html) emulator. But of course you can use your own tools with a little fixes to configs.
+This plugin contains syntax definition for PDP-11 assembler language, code snippets, its own shiny color theme. Building system is mainly oriented on [macro11](https://github.com/shattered/macro11) assembler and [RT-11](http://zx-pk.ru/threads/24755-emulyator-rt-11.html) emulator. But of course you can use your own tools with a little fixes to configs.
 
 ![Screenshot](readme.png)
 
@@ -36,8 +36,11 @@ You can specify a path to emulator by `PDP11Asm > Settings > Emul script...` men
 
 #### Snippets
 
-There are a lot of useful snippets for UKNC, you can trigger them by typing their name and pressing Tab:
+There are a lot of useful snippets ('<CTRL>+<F1>'), you can trigger them by typing their name and pressing Tab:
 
+	* ---            - Delimiter
+	* !init          - Skeleton for assembler
+	* !rt11prog      - Simple RT-11 programm skeleton
 
 #### Auto completion and Goto Symbol
 
@@ -49,7 +52,7 @@ You can use `Goto > Goto Symbol...` option to jump to the label definition. In S
 
 In the `PDP1Asm > Help` sub-menu you can find a few help files. Some of them are provided with the plugin, and you also can put your help file into `Packages/pdp11asm/helps/`, and it will appear in menu. There are maximum 10 files allowed.
 
-Also, you can call a quick help panel by pressing F1 where you can do a search through opcodes/mnemonics/timings.
+Also, you can call a quick help panel by pressing F1 where you can do a search through opcodes/mnemonics.
 
 ---
 

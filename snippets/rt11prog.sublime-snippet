@@ -15,7 +15,7 @@ START:
 	.Print	#Mes
 	.Exit
 
-Mes:	.ASCIZ	\This is RT-11 Programm !!!\
+Mes:	.ASCIZ	/This is RT-11 Programm !!!/
 
 END:	.END START
 ]]></content>
